@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="KYN AGENCY helps online brands scale through Instagram, TikTok, and Google advertising — focused on creative testing, data-backed decisions, and profitable growth." />
+  <title>KYN AGENCY — Performance-Driven Ads</title>
+
+  <style>
+    :root{
+      --bg:#070a12;
+      --panel:#0b1020;
+      --panel2:#0a0f1e;
+      --text:#eaf0ff;
+      --muted:#a9b4d6;
+      --line:rgba(255,255,255,.10);
+      --accent:#4b7bff;
+      --accent2:#82a2ff;
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 28px;
+      --max: 1120px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:
+        radial-gradient(1000px 700px at 70% 10%, rgba(75,123,255,.22), transparent 55%),
+        radial-gradient(900px 650px at 15% 20%, rgba(130,162,255,.14), transparent 60%),
+        radial-gradient(900px 650px at 80% 70%, rgba(75,123,255,.10), transparent 60%),
+        linear-gradient(180deg, #050714 0%, #070a12 40%, #050714 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{width:100%; max-width:var(--max); margin:0 auto; padding:0 20px;}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,10,18,.65);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      letter-spacing:.6px;
+      font-weight:800;
+    }
+    .logoMark{
+      width:36px; height:36px; border-radius:12px;
+      background:
+        linear-gradient(135deg, rgba(75,123,255,.95), rgba(130,162,255,.85));
+      box-shadow: 0 10px 30px rgba(75,123,255,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .logoMark:before{
+      content:"";
+      position:absolute; inset:-20%;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.55), transparent 40%);
+      transform: rotate(12deg);
+    }
+    .brand span{font-size:14px}
+    .brand small{display:block; font-size:11px; font-weight:600; color:var(--muted); margin-top:2px}
+    .navlinks{
+      display:flex; align-items:center; gap:18px;
+      font-size:13px; color:var(--muted);
+    }
+    .navlinks a{padding:8px 10px; border-radius:12px}
+    .navlinks a:hover{background:rgba(255,255,255,.05); color:var(--text)}
+    .navActions{display:flex; align-items:center; gap:10px}
+    .btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:14px;
+      font-weight:700;
+      font-size:13px;
+      display:inline-flex; align-items:center; gap:10px;
+      cursor:pointer;
+      transition:.2s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.07)}
+    .btn.primary{
+      border:1px solid rgba(75,123,255,.55);
+      background: linear-gradient(135deg, rgba(75,123,255,.95), rgba(130,162,255,.85));
+      box-shadow: 0 12px 30px rgba(75,123,255,.22);
+    }
+    .btn.primary:hover{filter:brightness(1.05)}
+    .btn .arrow{
+      width:10px; height:10px; border-right:2px solid currentColor; border-top:2px solid currentColor;
+      transform: rotate(45deg);
+      opacity:.9;
+    }
+
+    .hero{
+      padding:72px 0 40px;
+      position:relative;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .heroCard{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      padding:32px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .heroCard:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(600px 220px at 35% 0%, rgba(75,123,255,.25), transparent 60%),
+        radial-gradient(520px 240px at 80% 30%, rgba(130,162,255,.12), transparent 55%);
+      pointer-events:none;
+    }
+    .heroTag{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(75,123,255,.12);
+      border:1px solid rgba(75,123,255,.25);
+      color:var(--text);
+      font-weight:700;
+      font-size:12px;
+      position:relative;
+      z-index:1;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:99px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(75,123,255,.12);
+    }
+    h1{
+      margin:18px 0 10px;
+      font-size: clamp(34px, 5vw, 52px);
+      line-height:1.03;
+      letter-spacing:-.8px;
+      position:relative;
+      z-index:1;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+      max-width:52ch;
+      position:relative;
+      z-index:1;
+    }
+    .heroActions{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      position:relative;
+      z-index:1;
+    }
+    .kpis{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      position:relative;
+      z-index:1;
+    }
+    .kpi{
+      padding:14px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: rgba(7,10,18,.45);
+    }
+    .kpi strong{display:block; font-size:18px}
+    .kpi span{color:var(--muted); font-size:12px}
+
+    .sideCard{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      padding:22px;
+      box-shadow: var(--shadow);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      overflow:hidden;
+      position:relative;
+    }
+    .sideCard:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(420px 220px at 20% 0%, rgba(75,123,255,.20), transparent 55%),
+        radial-gradient(380px 200px at 90% 80%, rgba(130,162,255,.12), transparent 60%);
+      pointer-events:none;
+    }
+    .sideTop{
+      position:relative; z-index:1;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    }
+    .chip{
+      font-family: var(--mono);
+      font-size:12px;
+      color:rgba(255,255,255,.85);
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      padding:8px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+    .miniTitle{
+      position:relative; z-index:1;
+      margin:0;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+    .miniText{position:relative; z-index:1; margin:0; color:var(--muted); font-size:13px; line-height:1.55}
+    .spark{
+      height:170px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
+        radial-gradient(380px 160px at 30% 30%, rgba(75,123,255,.18), transparent 60%);
+      position:relative;
+      overflow:hidden;
+    }
+    .spark svg{position:absolute; inset:0; width:100%; height:100%}
+    .spark .grid line{stroke: rgba(255,255,255,.08); stroke-width:1}
+    .spark .line{fill:none; stroke: rgba(130,162,255,.9); stroke-width:3; filter: drop-shadow(0 10px 18px rgba(75,123,255,.22));}
+    .spark .line2{fill:none; stroke: rgba(75,123,255,.65); stroke-width:2}
+    .spark .dots circle{fill: rgba(255,255,255,.95)}
+    .spark .dots2 circle{fill: rgba(255,255,255,.65)}
+    .sideActions{position:relative; z-index:1; display:flex; gap:10px; flex-wrap:wrap}
+
+    section{
+      padding:56px 0;
+    }
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; margin-bottom:18px;
+    }
+    h2{
+      margin:0;
+      font-size:24px;
+      letter-spacing:-.4px;
+    }
+    .sectionDesc{
+      margin:0; color:var(--muted); font-size:13px; line-height:1.6; max-width:70ch;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(420px 220px at 20% 0%, rgba(75,123,255,.15), transparent 60%);
+      opacity:.55;
+      pointer-events:none;
+    }
+    .card h3{margin:0 0 8px; font-size:16px; letter-spacing:-.2px; position:relative; z-index:1}
+    .card p{margin:0; color:var(--muted); font-size:13px; line-height:1.65; position:relative; z-index:1}
+    .bullets{margin:10px 0 0; padding:0; list-style:none; position:relative; z-index:1}
+    .bullets li{
+      display:flex; gap:10px; align-items:flex-start;
+      color:rgba(255,255,255,.86);
+      font-size:13px;
+      line-height:1.55;
+      padding:6px 0;
+    }
+    .check{
+      width:18px; height:18px; border-radius:7px;
+      background:rgba(75,123,255,.16);
+      border:1px solid rgba(75,123,255,.25);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+      margin-top:1px;
+    }
+    .check:before{
+      content:"";
+      width:7px; height:4px;
+      border-left:2px solid rgba(255,255,255,.9);
+      border-bottom:2px solid rgba(255,255,255,.9);
+      transform: rotate(-45deg);
+      display:block;
+      margin-top:-1px;
+    }
+
+    .workGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+    }
+    .workCard{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius2);
+      padding:20px;
+      overflow:hidden;
+      position:relative;
+    }
+    .workCard:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(520px 240px at 20% 0%, rgba(75,123,255,.18), transparent 60%);
+      opacity:.75;
+      pointer-events:none;
+    }
+    .label{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      font-family: var(--mono);
+      font-size:12px;
+      color:rgba(255,255,255,.88);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      padding:8px 10px;
+      border-radius:999px;
+      position:relative; z-index:1;
+    }
+    .pill{
+      width:8px; height:8px; border-radius:99px; background:rgba(130,162,255,.9);
+      box-shadow:0 0 0 6px rgba(130,162,255,.12);
+    }
+    .mock{
+      margin-top:14px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      height:240px;
+      position:relative;
+      overflow:hidden;
+    }
+    .mock:before{
+      content:"";
+      position:absolute; inset:-20%;
+      background:
+        radial-gradient(circle at 40% 30%, rgba(75,123,255,.22), transparent 45%),
+        radial-gradient(circle at 75% 60%, rgba(130,162,255,.14), transparent 45%);
+      transform: rotate(6deg);
+    }
+    .mock .stats{
+      position:absolute; inset:16px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .stat{
+      border:1px solid var(--line);
+      background: rgba(7,10,18,.45);
+      border-radius:16px;
+      padding:12px;
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .stat small{color:var(--muted); font-size:12px}
+    .stat strong{font-size:18px; letter-spacing:-.2px}
+    .stat .bar{
+      height:10px; border-radius:99px; border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      overflow:hidden;
+    }
+    .stat .bar > i{
+      display:block; height:100%;
+      background: linear-gradient(90deg, rgba(75,123,255,.95), rgba(130,162,255,.85));
+      width:62%;
+    }
+
+    .blogGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .post{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+    .post:hover{transform: translateY(-2px); background: rgba(255,255,255,.06)}
+    .post:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(420px 220px at 20% 0%, rgba(75,123,255,.12), transparent 60%);
+      opacity:.7;
+      pointer-events:none;
+    }
+    .post .meta{display:flex; gap:10px; align-items:center; color:var(--muted); font-size:12px; position:relative; z-index:1}
+    .post h3{margin:10px 0 8px; font-size:16px; position:relative; z-index:1}
+    .post p{margin:0; color:var(--muted); font-size:13px; line-height:1.6; position:relative; z-index:1}
+    .post .read{margin-top:12px; display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:13px; position:relative; z-index:1}
+    .post .read .arrow{width:8px; height:8px}
+
+    .aboutWrap{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:start;
+    }
+    .quote{
+      border-left:3px solid rgba(75,123,255,.55);
+      padding-left:14px;
+      color:rgba(255,255,255,.88);
+      font-size:14px;
+      line-height:1.7;
+      margin:12px 0 0;
+    }
+
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      position:relative;
+      z-index:1;
+    }
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    label{
+      font-size:12px;
+      color:rgba(255,255,255,.86);
+      font-weight:700;
+    }
+    input, textarea, select{
+      border:1px solid var(--line);
+      background: rgba(7,10,18,.55);
+      color:var(--text);
+      padding:12px 12px;
+      border-radius:14px;
+      outline:none;
+      font-size:13px;
+      font-family:var(--sans);
+    }
+    textarea{min-height:120px; resize:vertical}
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(75,123,255,.55);
+      box-shadow: 0 0 0 4px rgba(75,123,255,.14);
+    }
+    .fineprint{margin:10px 0 0; color:var(--muted); font-size:12px; line-height:1.6}
+    .footer{
+      padding:28px 0 40px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .footerRow{
+      display:flex; flex-wrap:wrap; gap:12px;
+      align-items:center; justify-content:space-between;
+    }
+    .footer a{color:rgba(255,255,255,.8)}
+    .hideDesktop{display:none}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .heroGrid, .workGrid, .aboutWrap, .contactGrid{
+        grid-template-columns:1fr;
+      }
+      .kpis{grid-template-columns: repeat(3, 1fr)}
+      .navlinks{display:none}
+      .hideDesktop{display:inline-flex}
+    }
+    @media (max-width: 560px){
+      .kpis{grid-template-columns:1fr}
+      .grid3, .blogGrid{grid-template-columns:1fr}
+      .hero{padding-top:48px}
+      .heroCard{padding:22px}
+      .sideCard{padding:18px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Nav -->
+  <div class="topbar">
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="KYN Agency">
+          <div class="logoMark" aria-hidden="true"></div>
+          <div>
+            <span>KYN AGENCY</span>
+            <small>Performance-Driven Ads</small>
+          </div>
+        </a>
+
+        <nav class="navlinks" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#blog">Blog</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="navActions">
+          <a class="btn hideDesktop" href="#contact">Menu <span class="arrow" aria-hidden="true"></span></a>
+          <a class="btn" href="#work">View Work</a>
+          <a class="btn primary" href="#contact">Book a Free Audit <span class="arrow" aria-hidden="true"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <main id="top" class="hero">
+    <div class="container">
+      <div class="heroGrid">
+        <div class="heroCard">
+          <div class="heroTag"><span class="dot"></span> Paid Ads for Online Brands (IG • TikTok • Google)</div>
+          <h1>Performance-Driven Ads for Online Brands Ready to Scale</h1>
+          <p class="sub">
+            KYN AGENCY helps online brands grow profitably through creative testing, data-backed decisions,
+            and disciplined optimization across Instagram, TikTok, and Google.
+          </p>
+
+          <div class="heroActions">
+            <a class="btn primary" href="#contact">Book a Free Ad Audit <span class="arrow" aria-hidden="true"></span></a>
+            <a class="btn" href="#services">See Services <span class="arrow" aria-hidden="true"></span></a>
+          </div>
+
+          <div class="kpis" aria-label="Highlights">
+            <div class="kpi">
+              <strong>Creative Testing</strong>
+              <span>Find winners faster</span>
+            </div>
+            <div class="kpi">
+              <strong>Optimization</strong>
+              <span>Lower CPA, improve ROAS</span>
+            </div>
+            <div class="kpi">
+              <strong>Scaling</strong>
+              <span>Expand what converts</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="sideCard">
+          <div class="sideTop">
+            <div>
+              <p class="miniTitle">Analytics-First Execution</p>
+              <p class="miniText">We prioritize signal over noise: track what matters, test aggressively, then scale profitably.</p>
+            </div>
+            <span class="chip">KYN / SYSTEM</span>
+          </div>
+
+          <div class="spark" aria-label="Sample performance chart">
+            <svg viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">
+              <g class="grid">
+                <line x1="0" y1="100" x2="1000" y2="100"></line>
+                <line x1="0" y1="200" x2="1000" y2="200"></line>
+                <line x1="0" y1="300" x2="1000" y2="300"></line>
+                <line x1="0" y1="400" x2="1000" y2="400"></line>
+              </g>
+
+              <path class="line2" d="M0 380 C 140 360, 260 420, 400 330 C 520 250, 640 280, 760 220 C 860 180, 920 190, 1000 140"></path>
+              <path class="line" d="M0 410 C 140 420, 260 360, 400 300 C 520 240, 640 260, 760 200 C 860 160, 920 160, 1000 120"></path>
+
+              <g class="dots">
+                <circle cx="0" cy="410" r="7"></circle>
+                <circle cx="400" cy="300" r="7"></circle>
+                <circle cx="760" cy="200" r="7"></circle>
+                <circle cx="1000" cy="120" r="7"></circle>
+              </g>
+
+              <g class="dots2">
+                <circle cx="0" cy="380" r="6"></circle>
+                <circle cx="400" cy="330" r="6"></circle>
+                <circle cx="760" cy="220" r="6"></circle>
+                <circle cx="1000" cy="140" r="6"></circle>
+              </g>
+            </svg>
+          </div>
+
+          <div class="sideActions">
+            <a class="btn" href="#blog">Read the Blog <span class="arrow" aria-hidden="true"></span></a>
+            <a class="btn primary" href="#contact">Contact <span class="arrow" aria-hidden="true"></span></a>
+          </div>
+
+          <p class="fineprint">
+            Note: Sample visuals shown for demonstration purposes. We work with a limited number of brands to ensure quality.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Services</h2>
+          <p class="sectionDesc">
+            Built for brands that want predictable growth. We test creatives, optimize performance, and scale what converts.
+          </p>
+        </div>
+        <a class="btn" href="#contact">Get a Free Audit <span class="arrow" aria-hidden="true"></span></a>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>Paid Ads Management</h3>
+          <p>We build and manage campaigns across Meta, TikTok, and Google with a conversion-first structure.</p>
+          <ul class="bullets">
+            <li><span class="check"></span>Account setup & structure</li>
+            <li><span class="check"></span>Audience targeting & retargeting</li>
+            <li><span class="check"></span>Budget control & scaling</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Creative Strategy & Testing</h3>
+          <p>Creative is the lever. We develop hooks, angles, and formats and test to find winners fast.</p>
+          <ul class="bullets">
+            <li><span class="check"></span>Hook + angle development</li>
+            <li><span class="check"></span>Copywriting (headlines/CTAs)</li>
+            <li><span class="check"></span>Image + short-form video concepts</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Optimization & Scaling</h3>
+          <p>We focus on the metrics that matter and scale what performs, eliminating what doesn’t.</p>
+          <ul class="bullets">
+            <li><span class="check"></span>CPA reduction</li>
+            <li><span class="check"></span>Conversion rate improvement</li>
+            <li><span class="check"></span>Scaling strategies (budget + audiences)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Work (Sample)</h2>
+          <p class="sectionDesc">Example dashboards and performance-focused creative testing visuals. Replace with your real samples anytime.</p>
+        </div>
+        <span class="label"><span class="pill"></span> Performance over promises</span>
+      </div>
+
+      <div class="workGrid">
+        <div class="workCard">
+          <span class="label"><span class="pill"></span> Testing Dashboard</span>
+          <div class="mock" role="img" aria-label="Sample testing dashboard mock">
+            <div class="stats">
+              <div class="stat">
+                <small>Creative Variations</small>
+                <strong>12</strong>
+                <div class="bar"><i style="width:72%"></i></div>
+              </div>
+              <div class="stat">
+                <small>CPA Trend</small>
+                <strong>-18%</strong>
+                <div class="bar"><i style="width:62%"></i></div>
+              </div>
+              <div class="stat">
+                <small>Top Hook CTR</small>
+                <strong>2.4%</strong>
+                <div class="bar"><i style="width:55%"></i></div>
+              </div>
+              <div class="stat">
+                <small>ROAS (Tracked)</small>
+                <strong>3.1x</strong>
+                <div class="bar"><i style="width:66%"></i></div>
+              </div>
+            </div>
+          </div>
+          <p class="fineprint">Sample visualization only. Your real results will vary by offer, funnel, and product-market fit.</p>
+        </div>
+
+        <div class="workCard">
+          <span class="label"><span class="pill"></span> What We Test</span>
+          <ul class="bullets" style="margin-top:14px">
+            <li><span class="check"></span><strong>Hook:</strong> problem, curiosity, authority, outcome</li>
+            <li><span class="check"></span><strong>Angle:</strong> benefit-led vs pain-led vs proof-led</li>
+            <li><span class="check"></span><strong>Format:</strong> image, UGC-style video, demo, testimonial</li>
+            <li><span class="check"></span><strong>Offer:</strong> bundles, discounts, guarantees, trials</li>
+            <li><span class="check"></span><strong>Landing alignment:</strong> message match + speed</li>
+          </ul>
+
+          <div class="heroActions" style="margin-top:14px">
+            <a class="btn primary" href="#contact">Request a Free Audit <span class="arrow" aria-hidden="true"></span></a>
+            <a class="btn" href="#services">View Services <span class="arrow" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Blog</h2>
+          <p class="sectionDesc">Short, tactical insights about paid ads, testing, and scaling for online brands.</p>
+        </div>
+        <a class="btn" href="#contact">Talk to Us <span class="arrow" aria-hidden="true"></span></a>
+      </div>
+
+      <div class="blogGrid">
+        <article class="post" data-post="1" tabindex="0" role="button" aria-label="Open post: Why Most Ads Fail">
+          <div class="meta"><span class="chip">Strategy</span> <span>6 min read</span></div>
+          <h3>Why Most Ads Fail (And How to Fix It)</h3>
+          <p>Most brands don’t fail because of bad products — they fail because their ad system is broken. Here’s what to fix first.</p>
+          <div class="read">Read <span class="arrow" aria-hidden="true"></span></div>
+        </article>
+
+        <article class="post" data-post="2" tabindex="0" role="button" aria-label="Open post: Creative Testing">
+          <div class="meta"><span class="chip">Testing</span> <span>5 min read</span></div>
+          <h3>Creative Testing: How to Find Winners Faster</h3>
+          <p>Testing isn’t optional. It’s the process that reveals the message, hook, and format that actually converts.</p>
+          <div class="read">Read <span class="arrow" aria-hidden="true"></span></div>
+        </article>
+
+        <article class="post" data-post="3" tabindex="0" role="button" aria-label="Open post: Scaling Ads">
+          <div class="meta"><span class="chip">Scaling</span> <span>5 min read</span></div>
+          <h3>What to Fix Before You Scale Ad Spend</h3>
+          <p>Scaling amplifies what’s already happening. Here’s the checklist that prevents you from scaling problems.</p>
+          <div class="read">Read <span class="arrow" aria-hidden="true"></span></div>
+        </article>
+      </div>
+
+      <p class="fineprint">Tip: Replace these with your real posts, or keep them as “coming soon” placeholders.</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>About</h2>
+          <p class="sectionDesc">KYN AGENCY is built around one principle: test what matters, scale what converts.</p>
+        </div>
+      </div>
+
+      <div class="aboutWrap">
+        <div class="workCard">
+          <span class="label"><span class="pill"></span> About KYN</span>
+          <p class="sub" style="max-width:none; margin-top:14px">
+            KYN AGENCY is a performance-driven advertising agency focused on helping online brands scale profitably
+            through Instagram, TikTok, and Google ads. Our approach is built around creative testing, measurable
+            decision-making, and consistent optimization — not guesswork.
+          </p>
+          <p class="quote">
+            We don’t chase vanity metrics. We optimize for profitable growth — and we scale only what proves it can convert.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>What You Get</h3>
+          <p>Clear communication, fast iteration, and execution built around performance metrics.</p>
+          <ul class="bullets">
+            <li><span class="check"></span>Weekly updates (what we tested + what won)</li>
+            <li><span class="check"></span>Creative roadmap (what we build next)</li>
+            <li><span class="check"></span>Performance tracking (CPA, CVR, ROAS)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Contact</h2>
+          <p class="sectionDesc">Book a free ad audit or send an inquiry. If you’re a good fit, we’ll respond with next steps.</p>
+        </div>
+      </div>
+
+      <div class="contactGrid">
+        <div class="workCard">
+          <span class="label"><span class="pill"></span> Send a Message</span>
+
+          <!-- NOTE: This form is front-end only. Connect to your backend (Formspree, Netlify Forms, etc.) -->
+          <form id="contactForm">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" required />
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@brand.com" required />
+            </div>
+
+            <div class="field">
+              <label for="brand">Company / Brand</label>
+              <input id="brand" name="brand" placeholder="Brand name" />
+            </div>
+
+            <div class="field">
+              <label for="link">Website or Social Link</label>
+              <input id="link" name="link" placeholder="https://..." />
+            </div>
+
+            <div class="field">
+              <label for="spend">Monthly Ad Spend (optional)</label>
+              <select id="spend" name="spend">
+                <option value="">Select one</option>
+                <option value="0-1k">$0–$1k</option>
+                <option value="1k-5k">$1k–$5k</option>
+                <option value="5k-20k">$5k–$20k</option>
+                <option value="20k+">$20k+</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="message">How can we help?</label>
+              <textarea id="message" name="message" placeholder="Tell us what you're selling + what you're trying to improve (CPA, ROAS, scaling, creatives, etc.)" required></textarea>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:4px">
+              <button class="btn primary" type="submit">Submit Inquiry <span class="arrow" aria-hidden="true"></span></button>
+              <a class="btn" href="#top">Back to Top <span class="arrow" aria-hidden="true"></span></a>
+            </div>
+
+            <p class="fineprint" id="formNote">
+              We typically reply within 24–48 hours. We work with a limited number of brands to ensure quality.
+            </p>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Free Ad Audit (What You’ll Get)</h3>
+          <p>We’ll review your ads and funnel alignment and send back clear priorities.</p>
+          <ul class="bullets">
+            <li><span class="check"></span>Account structure & targeting check</li>
+            <li><span class="check"></span>Creative & hook diagnosis</li>
+            <li><span class="check"></span>Scaling readiness checklist</li>
+            <li><span class="check"></span>Quick wins + next steps</li>
+          </ul>
+
+          <div class="heroActions" style="margin-top:14px">
+            <!-- Replace href with your Calendly / booking link -->
+            <a class="btn primary" href="#" id="bookLink">Book a Call <span class="arrow" aria-hidden="true"></span></a>
+            <a class="btn" href="#services">See Services <span class="arrow" aria-hidden="true"></span></a>
+          </div>
+
+          <p class="fineprint">
+            Tip: Add your Calendly link to the “Book a Call” button once you set it up.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footerRow">
+        <div>© <span id="year"></span> KYN AGENCY. All rights reserved.</div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap">
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Small helpers
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Demo blog modal behavior (simple alert). Replace with real blog pages later.
+    const posts = {
+      1: {
+        title: "Why Most Ads Fail (And How to Fix It)",
+        text: "Most brands don’t fail because of bad products — they fail because their ad system is broken. Fix: test more creatives, optimize for conversion metrics, and scale only proven winners."
+      },
+      2: {
+        title: "Creative Testing: How to Find Winners Faster",
+        text: "Test hooks, angles, and formats in a structured way. Winners come from volume + discipline, not guessing."
+      },
+      3: {
+        title: "What to Fix Before You Scale Ad Spend",
+        text: "Before scaling: confirm tracking, message-match your landing page, and ensure CPA stability. Scaling amplifies what’s already happening."
+      }
+    };
+
+    document.querySelectorAll(".post").forEach(el => {
+      el.addEventListener("click", () => {
+        const id = el.getAttribute("data-post");
+        alert(posts[id].title + "\\n\\n" + posts[id].text + "\\n\\n(Replace this with a real blog page.)");
+      });
+      el.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") el.click();
+      });
+    });
+
+    // Contact form (front-end only)
+    const form = document.getElementById("contactForm");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const note = document.getElementById("formNote");
+      note.textContent = "✅ Submitted (demo). Connect this form to Formspree/Netlify/your backend to receive emails.";
+      note.style.color = "rgba(255,255,255,.9)";
+      form.reset();
+    });
+
+    // Booking link placeholder
+    document.getElementById("bookLink").addEventListener("click", (e) => {
+      e.preventDefault();
+      alert("Add your Calendly/booking link to the Book a Call button (id='bookLink').");
+    });
+  </script>
+</body>
+</html>
